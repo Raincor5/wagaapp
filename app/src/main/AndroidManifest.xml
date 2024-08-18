@@ -13,6 +13,16 @@
         android:theme="@style/Theme.FoodGuide"
         tools:targetApi="31">
         <activity
+            android:name=".IngredientDishesActivity"
+            android:exported="false"
+            android:label="@string/title_activity_ingredient_dishes"
+            android:theme="@style/Theme.FoodGuide" />
+        <activity
+            android:name=".DishIngredientsActivity"
+            android:exported="false"
+            android:label="DishIngredientsActivity"
+            android:theme="@style/Theme.FoodGuide" />
+        <activity
             android:name=".IngredientsActivity"
             android:exported="false"
             android:label="@string/title_activity_ingredients"
