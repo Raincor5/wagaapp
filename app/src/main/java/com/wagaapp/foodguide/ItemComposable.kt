@@ -1,3 +1,5 @@
+package com.wagaapp.foodguide
+
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -11,6 +13,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -22,25 +25,40 @@ fun ItemComposable(
     onFavoriteClick: () -> Unit,
     isFavorite: Boolean
 ) {
-    Row(
+    Box(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
-            .border(1.dp, Color.Red, RoundedCornerShape(8.dp))
-            .background(Color.LightGray)
+            .padding(vertical = 4.dp) // Padding between items
+            .border(1.dp, Color.Red, RoundedCornerShape(8.dp)) // Apply border first
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color.White,
+                        Color.LightGray
+                    )
+                ),
+                shape = RoundedCornerShape(8.dp) // Ensure background respects rounded corners
+            )
             .clickable { onClick() }
-            .padding(16.dp),
-        horizontalArrangement = Arrangement.SpaceBetween
+            .padding(16.dp) // Inner padding
     ) {
-        Text(
-            text = text,
-            style = MaterialTheme.typography.bodyLarge.copy(fontWeight = FontWeight.Bold)
-        )
-        Icon(
-            imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.Star,
-            contentDescription = null,
-            tint = Color.Gray,
-            modifier = Modifier.clickable { onFavoriteClick() }
-        )
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Text(
+                text = text,
+                style = MaterialTheme.typography.bodyLarge.copy(
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black // Ensure text is black for readability
+                )
+            )
+            Icon(
+                imageVector = if (isFavorite) Icons.Filled.Star else Icons.Outlined.Star,
+                contentDescription = null,
+                tint = if (isFavorite) Color(0xffff0000) else Color.Gray,
+                modifier = Modifier.clickable { onFavoriteClick() }
+            )
+        }
     }
 }

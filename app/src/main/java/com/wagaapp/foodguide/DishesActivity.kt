@@ -1,18 +1,21 @@
 package com.wagaapp.foodguide
 
-import ItemComposable
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.wagaapp.foodguide.data.Dish
@@ -20,24 +23,44 @@ import com.wagaapp.foodguide.ui.theme.FoodGuideTheme
 import parseCSV
 
 class DishesActivity : ComponentActivity() {
-    private val favoriteDishes = mutableSetOf<Int>()
+    private val favoriteDishesKey = "favorite_dishes"
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        sharedPreferences = getSharedPreferences("com.wagaapp.foodguide", Context.MODE_PRIVATE)
+        val favoriteDishes = getFavoriteDishes()
         val (dishes, _, _) = parseCSV(assets.open("dishes.csv"))
         setContent {
             FoodGuideTheme {
-                DishesScreen(dishes, { dishId -> navigateToDishIngredientActivity(dishId) }, { dishId -> toggleFavorite(dishId) }, favoriteDishes)
+                DishesScreen(
+                    dishes,
+                    onDishClick = { dishId -> navigateToDishIngredientActivity(dishId) },
+                    onFavoriteClick = { dishId -> toggleFavorite(dishId) },
+                    favoriteDishes = favoriteDishes
+                )
             }
         }
     }
 
+    private fun getFavoriteDishes(): MutableSet<Int> {
+        val favoriteDishesString = sharedPreferences.getStringSet(favoriteDishesKey, emptySet())
+        return favoriteDishesString?.map { it.toInt() }?.toMutableSet() ?: mutableSetOf()
+    }
+
+    private fun saveFavoriteDishes(favoriteDishes: Set<Int>) {
+        val favoriteDishesString = favoriteDishes.map { it.toString() }.toSet()
+        sharedPreferences.edit().putStringSet(favoriteDishesKey, favoriteDishesString).apply()
+    }
+
     private fun toggleFavorite(dishId: Int) {
+        val favoriteDishes = getFavoriteDishes()
         if (favoriteDishes.contains(dishId)) {
             favoriteDishes.remove(dishId)
         } else {
             favoriteDishes.add(dishId)
         }
+        saveFavoriteDishes(favoriteDishes)
     }
 
     private fun navigateToDishIngredientActivity(dishId: Int) {
@@ -49,17 +72,47 @@ class DishesActivity : ComponentActivity() {
 
 @Composable
 fun DishesScreen(dishes: List<Dish>, onDishClick: (Int) -> Unit, onFavoriteClick: (Int) -> Unit, favoriteDishes: Set<Int>) {
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(dishes) { dish ->
-            ItemComposable(
-                text = dish.dishName,
-                onClick = { onDishClick(dish.dishId) },
-                onFavoriteClick = { onFavoriteClick(dish.dishId) },
-                isFavorite = favoriteDishes.contains(dish.dishId)
-            )
+    var favoriteDishesState by remember { mutableStateOf(favoriteDishes) }
+
+    Column(modifier = Modifier.fillMaxSize()) {
+        // Header Section
+        Text(
+            text = "Dish List",
+            style = MaterialTheme.typography.headlineLarge.copy(
+                fontWeight = FontWeight.Bold,
+                color = Color.White
+            ),
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.Black)
+                .padding(vertical = 16.dp, horizontal = 16.dp)
+                .padding(8.dp)
+        )
+
+        // Dishes List
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
+            items(dishes) { dish ->
+                val isFavorite = favoriteDishesState.contains(dish.dishId)
+
+                // Apply the ItemComposable with appropriate parameters
+                ItemComposable(
+                    text = dish.dishName,
+                    onClick = { onDishClick(dish.dishId) },
+                    onFavoriteClick = {
+                        if (isFavorite) {
+                            favoriteDishesState = favoriteDishesState - dish.dishId
+                        } else {
+                            favoriteDishesState = favoriteDishesState + dish.dishId
+                        }
+                        onFavoriteClick(dish.dishId)
+                    },
+                    isFavorite = isFavorite
+                )
+            }
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable

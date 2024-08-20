@@ -1,18 +1,26 @@
 package com.wagaapp.foodguide
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.wagaapp.foodguide.data.Dish
 import com.wagaapp.foodguide.data.DishIngredient
 import com.wagaapp.foodguide.data.Ingredient
@@ -28,14 +36,25 @@ class IngredientDishesActivity : ComponentActivity() {
         val ingredientDishList = dishIngredients.filter { it.ingredientId == ingredientId }
         setContent {
             FoodGuideTheme {
-                IngredientDishesScreen(ingredient, ingredientDishList, dishes)
+                IngredientDishesScreen(ingredient, ingredientDishList, dishes, ::navigateToDishIngredientsActivity)
             }
         }
+    }
+
+    private fun navigateToDishIngredientsActivity(dishId: Int) {
+        val intent = Intent(this, DishIngredientsActivity::class.java)
+        intent.putExtra("dishId", dishId)
+        startActivity(intent)
     }
 }
 
 @Composable
-fun IngredientDishesScreen(ingredient: Ingredient?, ingredientDishes: List<DishIngredient>, dishes: List<Dish>) {
+fun IngredientDishesScreen(
+    ingredient: Ingredient?,
+    ingredientDishes: List<DishIngredient>,
+    dishes: List<Dish>,
+    navigateToDishIngredientsActivity: (Int) -> Unit
+) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -43,17 +62,91 @@ fun IngredientDishesScreen(ingredient: Ingredient?, ingredientDishes: List<DishI
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         ingredient?.let {
-            Text(text = it.ingredientName, style = MaterialTheme.typography.headlineMedium)
+            SectionHeader(title = "Dishes Containing ${ingredient.ingredientName}")
             Spacer(modifier = Modifier.height(16.dp))
-            LazyColumn {
-                items(ingredientDishes) { ingredientDish ->
-                    val dish = dishes.find { it.dishId == ingredientDish.dishId }
-                    dish?.let {
-                        Text(text = "${it.dishName}: ${ingredientDish.weight}", style = MaterialTheme.typography.bodyLarge)
-                    }
-                }
+            DishesList(ingredientDishes, dishes, navigateToDishIngredientsActivity)
+        }
+    }
+}
+
+@Composable
+fun SectionHeader(title: String) {
+    Box(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.Black.copy(alpha = 0.8f), shape = RoundedCornerShape(8.dp))
+            .border(1.dp, Color.Red, shape = RoundedCornerShape(8.dp))
+            .padding(16.dp)
+    ) {
+        Row(
+            modifier = Modifier.align(Alignment.Center),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "★",
+                color = Color.Red,
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = title,
+                color = Color.White,
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(
+                text = "★",
+                color = Color.Red,
+                fontWeight = FontWeight.Bold,
+                fontSize = 24.sp
+            )
+        }
+    }
+}
+
+@Composable
+fun DishesList(
+    ingredientDishes: List<DishIngredient>,
+    dishes: List<Dish>,
+    navigateToDishIngredientsActivity: (Int) -> Unit
+) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(Color.White)
+            .border(1.dp, Color.Red, shape = MaterialTheme.shapes.medium)
+            .padding(16.dp)
+    ) {
+        items(ingredientDishes) { ingredientDish ->
+            val dish = dishes.find { it.dishId == ingredientDish.dishId }
+            dish?.let {
+                DishItem(dishName = it.dishName, weight = ingredientDish.weight, onClick = { navigateToDishIngredientsActivity(it.dishId) })
             }
         }
+    }
+}
+
+@Composable
+fun DishItem(dishName: String, weight: String, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .padding(vertical = 4.dp)
+            .clickable { onClick() }
+    ) {
+        Text(
+            text = "★",
+            color = Color.Red,
+            fontWeight = FontWeight.Bold,
+            fontSize = 16.sp
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(
+            text = "$dishName: $weight",
+            color = Color.Black,
+            fontWeight = FontWeight.Bold
+        )
     }
 }
 
@@ -63,8 +156,9 @@ fun IngredientDishesScreenPreview() {
     FoodGuideTheme {
         IngredientDishesScreen(
             ingredient = Ingredient(1, "Ingredient 1"),
-            ingredientDishes = listOf(DishIngredient(1, 1, 100.0.toString())),
-            dishes = listOf(Dish(1, "Dish 1", false))
+            ingredientDishes = listOf(DishIngredient(1, 1, "100g")),
+            dishes = listOf(Dish(1, "Dish 1", false)),
+            navigateToDishIngredientsActivity = {}
         )
     }
 }
