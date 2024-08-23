@@ -84,33 +84,44 @@ fun IngredientListSection(
     navigateToIngredientDishesActivity: (Int) -> Unit
 ) {
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .background(Color.White)
-            .border(1.dp, Color.Red, shape = MaterialTheme.shapes.medium)
-            .padding(16.dp)
+        modifier = Modifier.fillMaxWidth()
     ) {
         dishIngredients.forEach { dishIngredient ->
             val ingredient = ingredients.find { it.ingredientId == dishIngredient.ingredientId }
             ingredient?.let {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clickable { navigateToIngredientDishesActivity(it.ingredientId) }
-                        .padding(vertical = 8.dp)
-                ) {
-                    Text(
-                        text = it.ingredientName,
-                        modifier = Modifier.weight(1f),
-                        style = MaterialTheme.typography.bodyLarge
-                    )
-                    Text(
-                        text = dishIngredient.weight,
-                        style = MaterialTheme.typography.bodyLarge
-                    )
-                }
+                IngredientItem(
+                    ingredientName = it.ingredientName,
+                    weight = dishIngredient.weight,
+                    onClick = { navigateToIngredientDishesActivity(it.ingredientId) }
+                )
             }
         }
+    }
+}
+
+@Composable
+fun IngredientItem(ingredientName: String, weight: String, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 4.dp)
+            .clickable { onClick() }
+            .background(Color.White, shape = MaterialTheme.shapes.medium)
+            .border(1.dp, Color.Red, shape = MaterialTheme.shapes.medium)
+            .padding(16.dp)
+    ) {
+        Text(
+            text = "★",
+            color = Color.Red,
+            fontWeight = FontWeight.Bold,
+            fontSize = 16.sp
+        )
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(
+            text = "$ingredientName: $weight",
+            color = Color.Black,
+            fontWeight = FontWeight.Bold
+        )
     }
 }
 
