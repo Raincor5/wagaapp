@@ -1,15 +1,21 @@
 package com.wagaapp.foodguide
 
+import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -18,6 +24,7 @@ import androidx.compose.ui.draw.BlurredEdgeTreatment
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -25,13 +32,21 @@ import androidx.compose.ui.unit.sp
 import com.wagaapp.foodguide.ui.theme.FoodGuideTheme
 
 class MainActivity : ComponentActivity() {
+    private val sharedPreferences by lazy {
+        getSharedPreferences("com.wagaapp.foodguide", Context.MODE_PRIVATE)
+    }
+    private val mainViewModel: MainViewModel by viewModels {
+        MainViewModelFactory(application, sharedPreferences)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             FoodGuideTheme {
                 MainScreen(
                     onDishesClick = { navigateToDishesActivity() },
-                    onIngredientsClick = { navigateToIngredientsActivity() }
+                    onIngredientsClick = { navigateToIngredientsActivity() },
+                    mainViewModel = mainViewModel
                 )
             }
         }
@@ -49,7 +64,11 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun MainScreen(onDishesClick: () -> Unit, onIngredientsClick: () -> Unit) {
+fun MainScreen(
+    onDishesClick: () -> Unit,
+    onIngredientsClick: () -> Unit,
+    mainViewModel: MainViewModel
+) {
     Column(modifier = Modifier.fillMaxSize()) {
         ImageButton(
             imageRes = R.drawable.image1,
@@ -106,10 +125,14 @@ fun ImageButton(imageRes: Int, text: String, onClick: () -> Unit, modifier: Modi
 @Preview(showBackground = true)
 @Composable
 fun MainScreenPreview() {
+    val context = LocalContext.current
+    val sharedPreferences = context.getSharedPreferences("com.wagaapp.foodguide", Context.MODE_PRIVATE)
+    val mainViewModel = MainViewModel(context.applicationContext as Application, sharedPreferences)
     FoodGuideTheme {
         MainScreen(
             onDishesClick = {},
-            onIngredientsClick = {}
+            onIngredientsClick = {},
+            mainViewModel = mainViewModel
         )
     }
 }

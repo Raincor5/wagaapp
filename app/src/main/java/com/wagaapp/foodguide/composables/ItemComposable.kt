@@ -1,4 +1,4 @@
-package com.wagaapp.foodguide
+package com.wagaapp.foodguide.composables
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border

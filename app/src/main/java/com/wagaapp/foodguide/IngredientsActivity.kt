@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.wagaapp.foodguide.composables.ItemComposable
 import com.wagaapp.foodguide.data.Ingredient
 import com.wagaapp.foodguide.ui.theme.FoodGuideTheme
 import parseCSV
