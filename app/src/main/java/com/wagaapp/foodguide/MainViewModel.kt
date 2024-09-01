@@ -17,8 +17,8 @@ class MainViewModel(application: Application, val sharedPreferences: SharedPrefe
     private val _isSessionActive = MutableStateFlow(false)
     val isSessionActive: StateFlow<Boolean> = _isSessionActive
 
-    private val _usedIngredients = MutableStateFlow<Set<String>>(emptySet())
-    val usedIngredients: StateFlow<Set<String>> = _usedIngredients
+    private val _usedIngredients = MutableStateFlow<Map<String, Set<String>>>(emptyMap())
+    val usedIngredients: StateFlow<Map<String, Set<String>>> = _usedIngredients
 
     private val logger = Logger.getLogger(MainViewModel::class.java.name)
 
@@ -71,18 +71,32 @@ class MainViewModel(application: Application, val sharedPreferences: SharedPrefe
 
     fun cancelSession() {
         _isSessionActive.value = false
-        _usedIngredients.value = emptySet()
+        _usedIngredients.value = emptyMap()
     }
 
-    fun toggleIngredientUsed(ingredientKey: String) {
+    fun addIngredientToDish(dish: String, ingredient: String) {
         viewModelScope.launch {
-            val currentSet = _usedIngredients.value.toMutableSet()
-            if (currentSet.contains(ingredientKey)) {
-                currentSet.remove(ingredientKey)
-            } else {
-                currentSet.add(ingredientKey)
+            val currentMap = _usedIngredients.value.toMutableMap()
+            val ingredients = currentMap[dish]?.toMutableSet() ?: mutableSetOf()
+            ingredients.add(ingredient)
+            currentMap[dish] = ingredients
+            _usedIngredients.value = currentMap
+        }
+    }
+
+    fun removeIngredientFromDish(dish: String, ingredient: String) {
+        viewModelScope.launch {
+            val currentMap = _usedIngredients.value.toMutableMap()
+            val ingredients = currentMap[dish]?.toMutableSet()
+            if (ingredients != null) {
+                ingredients.remove(ingredient)
+                if (ingredients.isEmpty()) {
+                    currentMap.remove(dish)
+                } else {
+                    currentMap[dish] = ingredients
+                }
+                _usedIngredients.value = currentMap
             }
-            _usedIngredients.value = currentSet
         }
     }
 }
