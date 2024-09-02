@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.preference.PreferenceActivity.Header
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -18,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.wagaapp.foodguide.composables.HeaderSection
 import com.wagaapp.foodguide.composables.ItemComposable
 import com.wagaapp.foodguide.data.Ingredient
 import com.wagaapp.foodguide.ui.theme.FoodGuideTheme
@@ -82,19 +84,7 @@ fun IngredientsScreen(
 
     Column(modifier = Modifier.fillMaxSize()) {
         // Header Section
-        Text(
-            text = "Ingredient List",
-            style = MaterialTheme.typography.headlineLarge.copy(
-                fontWeight = FontWeight.Bold,
-                color = Color.White
-            ),
-            modifier = Modifier
-                .fillMaxWidth()
-                .background(Color.Black)
-                .padding(vertical = 16.dp, horizontal = 16.dp)
-                .padding(8.dp)
-        )
-
+        HeaderSection(title = "Ingredient List")
         // Ingredients List
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             itemsIndexed(ingredients) { index, ingredient ->
