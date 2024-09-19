@@ -1,3 +1,4 @@
+// MainActivity.kt
 package com.wagaapp.foodguide
 
 import android.app.Application
@@ -29,6 +30,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.wagaapp.foodguide.data.DatabaseInitializer
 import com.wagaapp.foodguide.ui.theme.FoodGuideTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,6 +43,11 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Initialize the database
+        val databaseInitializer = DatabaseInitializer(this)
+        databaseInitializer.initializeDatabase()
+
         setContent {
             FoodGuideTheme {
                 MainScreen(

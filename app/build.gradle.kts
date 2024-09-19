@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
+    // importing kapt
+    id("com.google.devtools.ksp") version "1.9.0-1.0.13"
 }
 
 android {
@@ -60,6 +62,11 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.core.ktx)
+    implementation(libs.androidx.room.common)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.runtime.livedata)
+    ksp(libs.room.compiler)
+    implementation(libs.androidx.junit.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -67,7 +74,11 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
+    // Testing
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    // JUnit
+    testImplementation(libs.junit)
     // OpenCSV
     implementation(libs.opencsv)
 
@@ -79,4 +90,11 @@ dependencies {
 
     // Kotlin Coroutines Test
     testImplementation(libs.kotlinx.coroutines.test)
+
+    // Apache Commons Lang3
+    implementation("org.apache.commons:commons-lang3:3.12.0")
+}
+
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
 }

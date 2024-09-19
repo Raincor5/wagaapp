@@ -1,105 +1,105 @@
-dish_id,dish_name,ingredient_id,ingredient_name,weight,isFavorite
-1,Yaki Soba,1,Yaki Spring Onions,20g,False
-1,Yaki Soba,2,Red Peppers Teppan Cut,20g,False
-1,Yaki Soba,3,Green Peppers Teppan Cut,20g,False
-1,Yaki Soba,4,White Onions Teppan Cut,20g,False
-1,Yaki Soba,5,Beansprouts,100g,False
-1,Yaki Soba,6,For Complete Bag Add: Yaki Chicken,40g,False
-1,Yaki Soba,7,Cooked Sliced Prawns,8 pcs,False
-2,Yasai Yaki Soba,1,Yaki Spring Onions,20g,False
-2,Yasai Yaki Soba,8,Red Peppers Teppan,20g,False
-2,Yasai Yaki Soba,9,Green Peppers Teppan,20g,False
-2,Yasai Yaki Soba,10,White Onions Teppan,20g,False
-2,Yasai Yaki Soba,11,Shiitake Mushrooms,20g,False
-2,Yasai Yaki Soba,12,White Mushrooms,20g,False
-2,Yasai Yaki Soba,13,Garlic Paste,5g,False
-2,Yasai Yaki Soba,5,Beansprouts,100g,False
-3,Yaki Udon,14,Leeks,30g,False
-3,Yaki Udon,8,Red Peppers Teppan,20g,False
-3,Yaki Udon,9,Green Peppers Teppan,20g,False
-3,Yaki Udon,10,White Onions Teppan,20g,False
-3,Yaki Udon,11,Shiitake Mushrooms,20g,False
-3,Yaki Udon,5,Beansprouts,100g,False
-3,Yaki Udon,6,For Complete Bag Add: Yaki Chicken,40g,False
-3,Yaki Udon,15,Cooked Prawns,4 pcs,False
-4,Pad Thai,1,Yaki Spring Onions,20g,False
-4,Pad Thai,16,Ramen Red Onions,30g,False
-4,Pad Thai,14,Leeks,40g,False
-4,Pad Thai,17,Chillies Sliced,5g,False
-4,Pad Thai,18,Chilli Flakes,1g,False
-4,Pad Thai,13,Garlic Paste,5g,False
-4,Pad Thai,5,Beansprouts,100g,False
-4,Pad Thai,6,For Complete Bag Add: Yaki Chicken,40g,False
-4,Pad Thai,15,Cooked Prawns,6 pcs,False
-5,Teriyaki Soba,1,Yaki Spring Onions,20g,False
-5,Teriyaki Soba,19,Mangetout Julienne,20g,False
-5,Teriyaki Soba,20,Bok Choi,50g,False
-5,Teriyaki Soba,16,Ramen Red Onions,20g,False
-5,Teriyaki Soba,17,Chillies Sliced,3g,False
-5,Teriyaki Soba,5,Beansprouts,100g,False
-6,Raisukaree,1,Yaki Spring Onions,20g,False
-6,Raisukaree,21,Red Onions Wok Cut,30g,False
-6,Raisukaree,22,Red Peppers Wok Cut,20g,False
-6,Raisukaree,23,Green Peppers Wok Cut,20g,False
-6,Raisukaree,24,Mangetout Whole,6 pcs (20g),False
-6,Raisukaree,25,Ginger Minced,5g,False
-6,Raisukaree,13,Garlic Paste,5g,False
-7,Firecracker,1,Yaki Spring Onions,15g,False
-7,Firecracker,26,White Onions Wok Cut,40g,False
-7,Firecracker,22,Red Peppers Wok Cut,30g,False
-7,Firecracker,23,Green Peppers Wok Cut,30g,False
-7,Firecracker,24,Mangetout Whole,9 pcs (30g),False
-7,Firecracker,17,Chillies Sliced,10g,False
-7,Firecracker,27,Chillies Dried,3 each,False
-7,Firecracker,25,Ginger Minced,5g,False
-7,Firecracker,13,Garlic Paste,5g,False
-8,Mushroom Mix,28,Mixed Mushrooms,30g,False
-8,Mushroom Mix,29,Shiitake Mushrooms Sl.,30g,False
-8,Mushroom Mix,12,White Mushrooms,30g,False
-9,Mackerel Prep Bag,30,Blanched Broccoli,40g,False
-9,Mackerel Prep Bag,20,Bok Choi,30g,False
-9,Mackerel Prep Bag,11,Shiitake Mushrooms,30g,False
-9,Mackerel Prep Bag,31,Fried Sw. Potato Batons,40g,False
-10,Wok Fried Greens,30,Blanched Broccoli,60g,False
-10,Wok Fried Greens,32,Blanched Fine Beans,40g,False
-10,Wok Fried Greens,24,Mangetout Whole,30g,False
-10,Wok Fried Greens,33,Soaked Garlic,5g,False
-11,Duck Donburi Veg,34,Carrot Shredded,20g,False
-11,Duck Donburi Veg,16,Ramen Red Onions,20g,False
-11,Duck Donburi Veg,19,Mangetout Julienne,20g,False
-11,Duck Donburi Veg,35,Sweet Potato Shredded,20g,False
-12,Mini Yaki Soba,19,Mangetout Julienne,10g,False
-12,Mini Yaki Soba,8,Red Peppers Teppan,10g,False
-12,Mini Yaki Soba,36,Sweetcorn,20g,False
-13,Mini Chahan,19,Mangetout Julienne,10g,False
-13,Mini Chahan,34,Carrot Shredded,10g,False
-13,Mini Chahan,36,Sweetcorn,20g,False
-14,Chicken Katsu Salad,37,Sliced Apple,30g,False
-14,Chicken Katsu Salad,38,Cucumber Moons,20g,False
-14,Chicken Katsu Salad,39,Edamame Beans,20g,False
-14,Chicken Katsu Salad,40,Katsu Pickle,20g,False
-15,Korean Hot Pot,24,Mangetout Whole,20g,False
-15,Korean Hot Pot,41,Cooked Tteokbokki,5 pieces,False
-15,Korean Hot Pot,20,Bok Choi,30g,False
-15,Korean Hot Pot,21,Red Onions Wok Cut,30g,False
-15,Korean Hot Pot,42,Roasted But. Squash,50g,False
-16,Coconut Kare Veg,30,Blanched Broccoli,20g,False
-16,Coconut Kare Veg,42,Roasted But. Squash,40g,False
-16,Coconut Kare Veg,17,Chillies Sliced,5g,False
-16,Coconut Kare Veg,32,Blanched Fine Beans,20g,False
-17,Saku Saku Soba,1,Yaki Spring Onions,20g,False
-17,Saku Saku Soba,14,Leeks,30g,False
-17,Saku Saku Soba,5,Beansprouts,50g,False
-17,Saku Saku Soba,17,Chillies Sliced,5g,False
-18,Thai Steak Salad Veg,24,Mangetout Whole,20g,False
-18,Thai Steak Salad Veg,21,Red Onions Wok Cut,20g,False
-18,Thai Steak Salad Veg,1,Yaki Spring Onions,20g,False
-19,Ginger Chicken Udon,1,Yaki Spring Onions,20g,False
-19,Ginger Chicken Udon,19,Mangetout Julienne,20g,False
-19,Ginger Chicken Udon,21,Red Onions Wok Cut,30g,False
-19,Ginger Chicken Udon,17,Chillies Sliced,3g,False
-19,Ginger Chicken Udon,13,Garlic Paste,5g,False
-19,Ginger Chicken Udon,5,Beansprouts,100g,False
-19,Ginger Chicken Udon,44,Ginger Chicken,80g,False
-20,Gochujang Rice Bowl,20,Bok Choi,30g,False
-20,Gochujang Rice Bowl,21,Red Onions Wok Cut,20g,False
+dish_id,dish_name,ingredient_id,ingredient_name,weight
+1,Yaki Soba,1,Yaki Spring Onions,20g
+1,Yaki Soba,2,Red Peppers Teppan Cut,20g
+1,Yaki Soba,3,Green Peppers Teppan Cut,20g
+1,Yaki Soba,4,White Onions Teppan Cut,20g
+1,Yaki Soba,5,Beansprouts,100g
+1,Yaki Soba,6,For Complete Bag Add: Yaki Chicken,40g
+1,Yaki Soba,7,Cooked Sliced Prawns,8 pcs
+2,Yasai Yaki Soba,1,Yaki Spring Onions,20g
+2,Yasai Yaki Soba,8,Red Peppers Teppan,20g
+2,Yasai Yaki Soba,9,Green Peppers Teppan,20g
+2,Yasai Yaki Soba,10,White Onions Teppan,20g
+2,Yasai Yaki Soba,11,Shiitake Mushrooms,20g
+2,Yasai Yaki Soba,12,White Mushrooms,20g
+2,Yasai Yaki Soba,13,Garlic Paste,5g
+2,Yasai Yaki Soba,5,Beansprouts,100g
+3,Yaki Udon,14,Leeks,30g
+3,Yaki Udon,8,Red Peppers Teppan,20g
+3,Yaki Udon,9,Green Peppers Teppan,20g
+3,Yaki Udon,10,White Onions Teppan,20g
+3,Yaki Udon,11,Shiitake Mushrooms,20g
+3,Yaki Udon,5,Beansprouts,100g
+3,Yaki Udon,6,For Complete Bag Add: Yaki Chicken,40g
+3,Yaki Udon,15,Cooked Prawns,4 pcs
+4,Pad Thai,1,Yaki Spring Onions,20g
+4,Pad Thai,16,Ramen Red Onions,30g
+4,Pad Thai,14,Leeks,40g
+4,Pad Thai,17,Chillies Sliced,5g
+4,Pad Thai,18,Chilli Flakes,1g
+4,Pad Thai,13,Garlic Paste,5g
+4,Pad Thai,5,Beansprouts,100g
+4,Pad Thai,6,For Complete Bag Add: Yaki Chicken,40g
+4,Pad Thai,15,Cooked Prawns,6 pcs
+5,Teriyaki Soba,1,Yaki Spring Onions,20g
+5,Teriyaki Soba,19,Mangetout Julienne,20g
+5,Teriyaki Soba,20,Bok Choi,50g
+5,Teriyaki Soba,16,Ramen Red Onions,20g
+5,Teriyaki Soba,17,Chillies Sliced,3g
+5,Teriyaki Soba,5,Beansprouts,100g
+6,Raisukaree,1,Yaki Spring Onions,20g
+6,Raisukaree,21,Red Onions Wok Cut,30g
+6,Raisukaree,22,Red Peppers Wok Cut,20g
+6,Raisukaree,23,Green Peppers Wok Cut,20g
+6,Raisukaree,24,Mangetout Whole,6 pcs (20g)
+6,Raisukaree,25,Ginger Minced,5g
+6,Raisukaree,13,Garlic Paste,5g
+7,Firecracker,1,Yaki Spring Onions,15g
+7,Firecracker,26,White Onions Wok Cut,40g
+7,Firecracker,22,Red Peppers Wok Cut,30g
+7,Firecracker,23,Green Peppers Wok Cut,30g
+7,Firecracker,24,Mangetout Whole,9 pcs (30g)
+7,Firecracker,17,Chillies Sliced,10g
+7,Firecracker,27,Chillies Dried,3 each
+7,Firecracker,25,Ginger Minced,5g
+7,Firecracker,13,Garlic Paste,5g
+8,Mushroom Mix,28,Mixed Mushrooms,30g
+8,Mushroom Mix,29,Shiitake Mushrooms Sl.,30g
+8,Mushroom Mix,12,White Mushrooms,30g
+9,Mackerel Prep Bag,30,Blanched Broccoli,40g
+9,Mackerel Prep Bag,20,Bok Choi,30g
+9,Mackerel Prep Bag,11,Shiitake Mushrooms,30g
+9,Mackerel Prep Bag,31,Fried Sw. Potato Batons,40g
+10,Wok Fried Greens,30,Blanched Broccoli,60g
+10,Wok Fried Greens,32,Blanched Fine Beans,40g
+10,Wok Fried Greens,24,Mangetout Whole,30g
+10,Wok Fried Greens,33,Soaked Garlic,5g
+11,Duck Donburi Veg,34,Carrot Shredded,20g
+11,Duck Donburi Veg,16,Ramen Red Onions,20g
+11,Duck Donburi Veg,19,Mangetout Julienne,20g
+11,Duck Donburi Veg,35,Sweet Potato Shredded,20g
+12,Mini Yaki Soba,19,Mangetout Julienne,10g
+12,Mini Yaki Soba,8,Red Peppers Teppan,10g
+12,Mini Yaki Soba,36,Sweetcorn,20g
+13,Mini Chahan,19,Mangetout Julienne,10g
+13,Mini Chahan,34,Carrot Shredded,10g
+13,Mini Chahan,36,Sweetcorn,20g
+14,Chicken Katsu Salad,37,Sliced Apple,30g
+14,Chicken Katsu Salad,38,Cucumber Moons,20g
+14,Chicken Katsu Salad,39,Edamame Beans,20g
+14,Chicken Katsu Salad,40,Katsu Pickle,20g
+15,Korean Hot Pot,24,Mangetout Whole,20g
+15,Korean Hot Pot,41,Cooked Tteokbokki,5 pieces
+15,Korean Hot Pot,20,Bok Choi,30g
+15,Korean Hot Pot,21,Red Onions Wok Cut,30g
+15,Korean Hot Pot,42,Roasted But. Squash,50g
+16,Coconut Kare Veg,30,Blanched Broccoli,20g
+16,Coconut Kare Veg,42,Roasted But. Squash,40g
+16,Coconut Kare Veg,17,Chillies Sliced,5g
+16,Coconut Kare Veg,32,Blanched Fine Beans,20g
+17,Saku Saku Soba,1,Yaki Spring Onions,20g
+17,Saku Saku Soba,14,Leeks,30g
+17,Saku Saku Soba,5,Beansprouts,50g
+17,Saku Saku Soba,17,Chillies Sliced,5g
+18,Thai Steak Salad Veg,24,Mangetout Whole,20g
+18,Thai Steak Salad Veg,21,Red Onions Wok Cut,20g
+18,Thai Steak Salad Veg,1,Yaki Spring Onions,20g
+19,Ginger Chicken Udon,1,Yaki Spring Onions,20g
+19,Ginger Chicken Udon,19,Mangetout Julienne,20g
+19,Ginger Chicken Udon,21,Red Onions Wok Cut,30g
+19,Ginger Chicken Udon,17,Chillies Sliced,3g
+19,Ginger Chicken Udon,13,Garlic Paste,5g
+19,Ginger Chicken Udon,5,Beansprouts,100g
+19,Ginger Chicken Udon,44,Ginger Chicken,80g
+20,Gochujang Rice Bowl,20,Bok Choi,30g
+20,Gochujang Rice Bowl,21,Red Onions Wok Cut,20g

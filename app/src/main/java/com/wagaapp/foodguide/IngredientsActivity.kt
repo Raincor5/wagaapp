@@ -4,26 +4,19 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.preference.PreferenceActivity.Header
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.wagaapp.foodguide.composables.HeaderSection
 import com.wagaapp.foodguide.composables.ItemComposable
-import com.wagaapp.foodguide.data.Ingredient
+import com.wagaapp.foodguide.data.entitites.Ingredient
 import com.wagaapp.foodguide.ui.theme.FoodGuideTheme
-import parseCSV
+import com.wagaapp.foodguide.utils.parseCSV
 
 class IngredientsActivity : ComponentActivity() {
     private val favoriteIngredientsKey = "favorite_ingredients"

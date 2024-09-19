@@ -15,12 +15,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.wagaapp.foodguide.data.Dish
-import com.wagaapp.foodguide.data.DishIngredient
-import com.wagaapp.foodguide.data.Ingredient
+import com.wagaapp.foodguide.data.entitites.Dish
+import com.wagaapp.foodguide.data.entitites.DishIngredientCrossRef as DishIngredient
+import com.wagaapp.foodguide.data.entitites.Ingredient
 import com.wagaapp.foodguide.ui.theme.FoodGuideTheme
 import com.wagaapp.foodguide.composables.*
-import parseCSV
+import com.wagaapp.foodguide.utils.parseCSV
 
 class IngredientDishesActivity : ComponentActivity() {
     private lateinit var sharedPreferences: SharedPreferences
